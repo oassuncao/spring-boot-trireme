@@ -22,7 +22,7 @@ public class HomeController {
     @RequestMapping("/compile/basic")
     @ResponseBody
     public String compileBasic() throws InterruptedException, NodeException, ExecutionException {
-        NodeScript script = node.createScript("basic", new File("/Users/oassuncao/ME/dev/java/target/classes/modules/main.js"), null);
+        NodeScript script = node.createScript("basic", new File("/Users/oassuncao/ME/dev/java/target/classes/node/main.js"), null);
         return getResult(script);
     }
 

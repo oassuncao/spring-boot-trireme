@@ -60,3 +60,7 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
+/src/main/resources/node/etc
+/src/main/resources/node/node
+/src/main/resources/node/node_modules
+
