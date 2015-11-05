@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.concurrent.ExecutionException;
 
 @Controller
@@ -22,13 +23,14 @@ public class HomeController {
     @RequestMapping("/compile/basic")
     @ResponseBody
     public String compileBasic() throws InterruptedException, NodeException, ExecutionException {
-        NodeScript script = node.createScript("basic", new File("/Users/oassuncao/ME/dev/java/target/classes/node/main.js"), null);
-        return getResult(script);
-    }
+        LocalDateTime dateTime = LocalDateTime.now();
+        NodeScript script = node.createScript("basic", new File("/Users/oassuncao/ME/dev/java/spring-boot-trireme/target/classes/node/main.js"), null);
+        String result = getResult(script);
+        LocalDateTime finishDateTime = LocalDateTime.now();
 
-    private String runScript(String name, String script, String[] args) throws NodeException, ExecutionException, InterruptedException {
-        NodeScript nodeScript = node.createScript(name, script, args);
-        return getResult(nodeScript);
+        long diffInMilli = java.time.Duration.between(dateTime, finishDateTime).toMillis();
+
+        return String.format("Compiled in %d milliseconds", diffInMilli);
     }
 
     private String getResult(NodeScript nodeScript) throws NodeException, ExecutionException, InterruptedException {
@@ -63,5 +65,10 @@ public class HomeController {
     @ResponseBody
     public String home() {
         return "Hello World!";
+    }
+
+    private String runScript(String name, String script, String[] args) throws NodeException, ExecutionException, InterruptedException {
+        NodeScript nodeScript = node.createScript(name, script, args);
+        return getResult(nodeScript);
     }
 }

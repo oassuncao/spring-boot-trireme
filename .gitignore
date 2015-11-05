@@ -62,5 +62,6 @@ crashlytics-build.properties
 
 /src/main/resources/node/etc
 /src/main/resources/node/node
+/src/main/resources/node/dist
 /src/main/resources/node/node_modules
 
