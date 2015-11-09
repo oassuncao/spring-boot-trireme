@@ -1,6 +1,6 @@
 $ = require "jquery"
-require "./style.css";
-require "./animale.less";
+require "./../css/style.css";
+require "./../less/animale.less";
 
 
 #### Adds plugin object to jQuery
