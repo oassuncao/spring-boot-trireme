@@ -1,3 +1,4 @@
+require("bootstrap-webpack");
 require("./../coffee/screen.coffee");
 
 var img1 = document.createElement("img");
